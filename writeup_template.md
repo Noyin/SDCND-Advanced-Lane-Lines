@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 [image6]: ./writeup_images/color_fit_lines.jpg "Fit Visual"
 [image7]: ./writeup_images/example_output.jpg "Output"
 [image8]: ./processed_project_video.gif "Video"
-[video]: ./processed_project_video.mpeg "Video"
+[video]: ./processed_project_video.mp4 "Video"
 
 ### Camera Calibration
 
