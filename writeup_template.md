@@ -21,7 +21,7 @@ The goals / steps of this project are the following:
 [image5a]: ./writeup_images/warp_confirmation.jpg "Warp Example"
 [image5b]: ./writeup_images/warped_straight_lines.jpg "Warp Example"
 [image6]: ./writeup_images/color_fit_lines.jpg "Fit Visual"
-[image7]: ./writeup_images/example_output.jpg "Output"
+[image7]: ./writeup_images/example_output.jpg "Output" 
 [image8]: ./processed_project_video.gif "Video"
 [video]: ./processed_project_video.mp4 "Video"
 
@@ -29,7 +29,7 @@ The goals / steps of this project are the following:
 
 The code for this step is contained in the second code cell of the IPython notebook located in "./CarND-Advanced-Lane-Lines .ipynb".  
 
-To calculate camera matrix and the distortion coefficients, I first of all created an object point `objp` which represents a chess board fixed on the x,y plane with z = 0.Then I looped through the calibration images and applied `cv2.findChessboardCorners()` function on each image. Whenerver corners are detected I saved a copy of an object point `objp` to an object points array `objpoints` and saved the detected corners of an image to an image points array `imgpoints`.I passed the object points array `objpoints` and image points array `imgpoints` as inputs to `cv2.calibrateCamera()` function which returns camera matrix `mtx` and distortion coefficients `dist`.I applied the camera matrix `mtx` and distortion coefficients `dist` to an image using `cv2.undistort()` function and got the following result:
+To calculate camera matrix and the distortion coefficients, I first of all created an object point `objp` which represents a chess board fixed on the x,y plane with z = 0.Then I looped through the calibration images and applied `cv2.findChessboardCorners()` function on each image. Whenerver corners are detected I saved a copy of an object point `objp` to an object points array `objpoints` and saved the detected corners of an image to an image points array `imgpoints`.I passed the object points array `objpoints` and image points array `imgpoints` as inputs to `cv2.calibrateCamera()` function which returns camera matrix `mtx` and distortion coefficients `dist`. I applied the camera matrix `mtx` and distortion coefficients `dist` to an image using `cv2.undistort()` function and got the following result:
 ![alt text][image1]
 
 ### Distortion correction
@@ -38,7 +38,7 @@ In code cell 3, I applied the calculated camera matrix `mtx` and distortion coef
 
 ### Application of color transforms and gradients
 
-From code cells 4 to 18 , I explored various colour channels and calculated sobel in the horizontal direction , sobel in the vertical direction using the `cv2.Sobel()` function and then  calculated the magnitude and direction of their gradient. Of all the colour channels, I choose L channel from the HSL color space as it performs well under changing lighting conditons and S channel from the HSV colour space as it generally perfomes well compared to other channels in identifying lane lines.I applied a threshold to the outputted binary image with minimum and maximum values set to 10 and 150 respectively.
+From code cells 4 to 18 , I explored various colour channels and calculated sobel in the horizontal direction , sobel in the vertical direction using the `cv2.Sobel()` function and then  calculated the magnitude and direction of their gradient. Of all the colour channels, I choose L channel from the HSL color space as it performs well under changing lighting conditons and S channel from the HSV colour space as it generally perfomes well compared to other channels in identifying lane lines. I applied a threshold to the outputted binary image with minimum and maximum values set to 10 and 150 respectively.
 
 I combined the thresholded binary image from the L channel and S channel to get the following result:
 
@@ -50,7 +50,7 @@ I also applied a `isolate_region_interest()` function in code cell 19,  to isola
 
 ### Perspective transform
 
-I derive perspective tranform `M` in code cell 20, by using `cv2.getPerspectiveTransform()` function which takes in an array of source points `src` and destination points `dst`. Below are the harcoded values used for source points `src` and destination points `dst`:
+I derived perspective tranform `M` in code cell 20, by using `cv2.getPerspectiveTransform()` function which takes in an array of source points `src` and destination points `dst`. Below are the harcoded values used for source points `src` and destination points `dst`:
 
 ```python
 src = np.float32([(257, 685), (1100, 685), (583, 460),(720, 460)])
@@ -95,10 +95,10 @@ Here's a [link to the processed video][video]
 ---
 
 ### Discussion
+The output from the pipeline generally performed well on straight roads and slight curves. It also perfomed well under different lighting conditions.
+Though, the pipeline performs poorly on sharp curves, in situations where only one lane line is visible in the image(frame). Also its fails to differentiate between dark lines(edge of road or newly tarred sections of the road) and lane lines.It performs poorly on inclined roads.
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+To make a more robust pipeline, I would improve the thresholded binary image to identify only lanes lines (i.e differentiate between dark edges and lane lines). I would also improve the pipeline to be able to identify single lane lines in images(frames). I would implement an adjustable second order polynomial fitting of lane lines for different scenarios such as flat and inclined roads.
 
 
 
