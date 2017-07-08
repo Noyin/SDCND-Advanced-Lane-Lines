@@ -31,7 +31,7 @@ The code for the following steps are  contained in the IPython notebook located 
 ### Camera Calibration
 
 
-In code cell 2, I calculated camera matrix and the distortion coefficients using the `calculate_camera_matrix_and_disturtion_coefficients()` function. I first of all created an object point `objp` which represents a chess board fixed on the x,y plane with z = 0.Then I looped through the calibration images and applied `cv2.findChessboardCorners()` function on each image. Whenerver corners are detected I saved a copy of an object point `objp` to an object points array `objpoints` and saved the detected corners of an image to an image points array `imgpoints`.I passed the object points array `objpoints` and image points array `imgpoints` as inputs to `cv2.calibrateCamera()` function which returns camera matrix `mtx` and distortion coefficients `dist`. I applied the camera matrix `mtx` and distortion coefficients `dist` to an image using `cv2.undistort()` function and got the following result:
+In code cell 2, I calculated camera matrix and distortion coefficients using the `calculate_camera_matrix_and_disturtion_coefficients()` function. I first of all created an object point `objp` which represents a chess board fixed on the x,y plane with z = 0.Then I looped through the calibration images and applied `cv2.findChessboardCorners()` function on each image. Whenerver corners are detected I saved a copy of an object point `objp` to an object points array `objpoints` and saved the detected corners of an image to an image points array `imgpoints`.I passed the object points array `objpoints` and image points array `imgpoints` as inputs to `cv2.calibrateCamera()` function which returns camera matrix `mtx` and distortion coefficients `dist`. I applied the camera matrix `mtx` and distortion coefficients `dist` to an image using `cv2.undistort()` function and got the following result:
 ![alt text][image1]
 
 ### Distortion correction
@@ -79,9 +79,9 @@ In code cell 24 , I applied a sliding window search using `find_window_centroids
 In code cell 25 , I used  `pos_from_center()` function to calculate the center position of vehicle with respect to center and `get_curvature()` function to calculate radius of curvature of the lane lines.
 
 
-### final image with identified lane area
+### Final image with identified lane area
 
-In code cell 27, I used `create_overlay()` function to create an overlay and perform a perspective tranform using `cv2.getPerspectiveTransform()` function with an inverse perspective tranform `Minv` as input.The resulting overlay covers the identified lane area. Here is an example of applying the `create_overlay()` function on a test image:
+In code cell 27, I used `create_overlay()` function to create an overlay and performed a perspective tranform using `cv2.getPerspectiveTransform()` function with an inverse perspective tranform `Minv` as input.The resulting overlay covers the identified lane area. Here is an example of applying the `create_overlay()` function on a test image:
 ![alt text][image7]
 
 ---
