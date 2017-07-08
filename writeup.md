@@ -25,11 +25,13 @@ The goals / steps of this project are the following:
 [image8]: ./processed_project_video.gif "Video"
 [video]: ./processed_project_video.mp4 "Video"
 
+
+The code for the following steps are  contained in the IPython notebook located in "./CarND-Advanced-Lane-Lines .ipynb". 
+
 ### Camera Calibration
 
-The code for this step is contained in the second code cell of the IPython notebook located in "./CarND-Advanced-Lane-Lines .ipynb".  
 
-To calculate camera matrix and the distortion coefficients, I first of all created an object point `objp` which represents a chess board fixed on the x,y plane with z = 0.Then I looped through the calibration images and applied `cv2.findChessboardCorners()` function on each image. Whenerver corners are detected I saved a copy of an object point `objp` to an object points array `objpoints` and saved the detected corners of an image to an image points array `imgpoints`.I passed the object points array `objpoints` and image points array `imgpoints` as inputs to `cv2.calibrateCamera()` function which returns camera matrix `mtx` and distortion coefficients `dist`. I applied the camera matrix `mtx` and distortion coefficients `dist` to an image using `cv2.undistort()` function and got the following result:
+In code cell 2, I calculated camera matrix and the distortion coefficients. I first of all created an object point `objp` which represents a chess board fixed on the x,y plane with z = 0.Then I looped through the calibration images and applied `cv2.findChessboardCorners()` function on each image. Whenerver corners are detected I saved a copy of an object point `objp` to an object points array `objpoints` and saved the detected corners of an image to an image points array `imgpoints`.I passed the object points array `objpoints` and image points array `imgpoints` as inputs to `cv2.calibrateCamera()` function which returns camera matrix `mtx` and distortion coefficients `dist`. I applied the camera matrix `mtx` and distortion coefficients `dist` to an image using `cv2.undistort()` function and got the following result:
 ![alt text][image1]
 
 ### Distortion correction
@@ -44,7 +46,7 @@ I combined the thresholded binary image from the L channel and S channel to get 
 
 ![alt text][image3]
 
-I also applied a `isolate_region_interest()` function in code cell 19,  to isolate only lane lines in the thresholded binary image.Below is an example:
+I also applied a `isolate_region_interest()` function in code cell 19,  to isolate only lane lines in the thresholded binary image. Below is an example:
 
 ![alt text][image4]
 
@@ -74,7 +76,7 @@ In code cell 22 , I applied a sliding window search using `find_window_centroids
 
 ### Calculate radius of curvature and position of vehicle with respect to center
 
-In code cell 23 , I used  `pos_from_center()` function to calcuolate the center position of vehicle with respect to center and `get_curvature()` function to calculate radius of curvature of the lane lines.
+In code cell 23 , I used  `pos_from_center()` function to calculate the center position of vehicle with respect to center and `get_curvature()` function to calculate radius of curvature of the lane lines.
 
 
 ### final image with identified lane area
@@ -98,7 +100,7 @@ Here's a [link to the processed video][video]
 The output from the pipeline generally performed well on straight roads and slight curves. It also perfomed well under different lighting conditions.
 Though, the pipeline performs poorly on sharp curves, in situations where only one lane line is visible in the image(frame). Also its fails to differentiate between dark lines(edge of road or newly tarred sections of the road) and lane lines.It performs poorly on inclined roads.
 
-To make a more robust pipeline, I would improve the thresholded binary image to identify only lanes lines (i.e differentiate between dark edges and lane lines). I would also improve the pipeline to be able to identify single lane lines in images(frames). I would implement an adjustable second order polynomial fitting of lane lines for different scenarios such as flat and inclined roads.
+To make a more robust pipeline, I would improve the thresholded binary image to identify only lanes lines (i.e differentiate between dark edges and lane lines). I would also improve the pipeline to be able to identify single lane lines in an image(frame). I would implement an adjustable second order polynomial fitting of lane lines for different road scenarios such as flat and inclined roads.
 
 
 
