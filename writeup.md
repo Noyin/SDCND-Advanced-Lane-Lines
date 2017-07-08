@@ -14,14 +14,14 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./writeup_images/undistort_output.png "Undistorted"
-[image2]: ./writeup_images/test6.jpg "Road Transformed"
-[image3]: ./writeup_images/binary_combo_example.jpg "Binary Example"
-[image4]: ./writeup_images/ROI_image.jpg "ROI" 
-[image5a]: ./writeup_images/warp_confirmation.jpg "Warp Example"
-[image5b]: ./writeup_images/warped_straight_lines.jpg "Warp Example"
-[image6]: ./writeup_images/color_fit_lines.jpg "Fit Visual"
-[image7]: ./writeup_images/example_output.jpg "Output" 
+[image1]: ./output_images/undistort_output.png "Undistorted"
+[image2]: ./output_images/test6.jpg "Road Transformed"
+[image3]: ./output_images/binary_combo_example.jpg "Binary Example"
+[image4]: ./output_images/ROI_image.jpg "ROI" 
+[image5a]: ./output_images/warp_confirmation.jpg "Warp Example"
+[image5b]: ./output_images/warped_straight_lines.jpg "Warp Example"
+[image6]: ./output_images/color_fit_lines.jpg "Fit Visual"
+[image7]: ./output_images/example_output.jpg "Output" 
 [image8]: ./processed_project_video.gif "Video"
 [video]: ./processed_project_video.mp4 "Video"
 
