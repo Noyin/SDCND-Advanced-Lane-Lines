@@ -85,7 +85,7 @@ In code cell 25, I used `create_overlay()` function to create an overlay and per
 ### Pipeline (video)
 
 In code cell 27 , I created a pipeline to output an image with an overlay showing detected lane region and text showing lane curvature and vehicle center position.I passed each frame of the project video through the pipeline and obtained the result below:
-[![IMAGE ALT TEXT][image7]]([image8] "Video")
+![alt text][image8]
 Here's a [link to the processed video][video]
 
 ---
